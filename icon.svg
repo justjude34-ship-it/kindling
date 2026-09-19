@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kindling">
+  <rect width="512" height="512" rx="108" fill="#07080c"/>
+  <path d="M150 360 C150 260 200 180 256 180 C312 180 362 260 362 360" fill="none" stroke="#e0a85c" stroke-width="26" stroke-linecap="round"/>
+  <path d="M150 360 C150 300 190 250 256 250 C322 250 362 300 362 360" fill="none" stroke="#7ec8c0" stroke-width="18" stroke-linecap="round" opacity=".7"/>
+  <circle cx="256" cy="200" r="14" fill="#e0a85c"/>
+  <circle cx="256" cy="200" r="6" fill="#f4efe6"/>
+</svg>

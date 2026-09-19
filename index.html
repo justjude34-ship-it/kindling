@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Kindling</title>
+<meta name="theme-color" content="#07080c"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="icon" href="icon.svg" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07080c;--card:#10131b;--ink:#f4efe6;--muted:#b7b0a4;--spark:#e0a85c;--anchor:#7ec8c0;--ember:#c4a7e7;--line:rgba(224,168,92,.22);--nav-h:4.6rem;--safe-b:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif}
+body{min-height:100dvh;background:radial-gradient(900px 520px at 88% -10%,rgba(224,168,92,.12),transparent 55%),radial-gradient(720px 460px at -14% 16%,rgba(126,200,192,.1),transparent 52%),var(--bg)}
+body.dim{filter:saturate(.72) brightness(.86)}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
+.app{width:min(42rem,100%);margin:0 auto;min-height:100dvh;padding-bottom:calc(var(--nav-h) + var(--safe-b) + 3.4rem)}
+.view{display:none;padding:1.15rem 1.15rem 1.6rem}.view.on{display:block}
+.top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.2rem 0 1rem}
+.brand{font-family:"Cormorant Garamond",serif;font-size:1.55rem}.brand em{font-style:normal;color:var(--spark)}
+h1{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1.08;margin:0 0 .55rem;font-weight:600}
+h2{font-family:"Cormorant Garamond",serif;font-size:1.42rem;margin:0 0 .45rem;font-weight:600}
+p{color:var(--muted);line-height:1.55;margin:0 0 1rem}
+.kicker{color:var(--anchor);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.45rem}
+.kicker.spark{color:var(--spark)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 42%),var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1.1rem 1.05rem}
+.stack{display:flex;flex-direction:column;gap:.75rem}.choices{display:flex;flex-direction:column;gap:.55rem}.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.choice,.btn,.chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:3.4rem;border-radius:1.1rem;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:.8rem 1rem}
+.chip{min-height:2.7rem;border-radius:999px;padding:.45rem .9rem;font-size:.92rem}
+.choice.on,.chip.on{border-color:var(--spark);background:rgba(224,168,92,.14)}
+.chip.anchor.on{border-color:var(--anchor);background:rgba(126,200,192,.14)}
+.chip.ember.on{border-color:var(--ember);background:rgba(196,167,231,.16)}
+.btn-gold{background:var(--spark);color:#1a1408;border-color:var(--spark);font-weight:600}
+.btn-row{display:flex;flex-wrap:wrap;gap:.55rem}.btn-row .btn{flex:1 1 8rem}
+.field{width:100%;background:#0b0e14;border:1px solid var(--line);border-radius:1rem;padding:.9rem 1rem;outline:none}
+.field:focus{border-color:var(--spark)}textarea.field{min-height:7rem;resize:vertical}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.tile{text-align:left;min-height:6.1rem;border-radius:1.15rem;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:.9rem .85rem;display:flex;flex-direction:column;justify-content:space-between}
+.tile span{color:var(--spark);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.tile.anchor span{color:var(--anchor)}.tile strong{font-family:"Cormorant Garamond",serif;font-size:1.26rem;font-weight:600}
+.tiny{font-size:.86rem;color:var(--muted)}
+.coach{color:var(--ink);line-height:1.55;margin:0}
+.crisis-bar{position:fixed;left:0;right:0;bottom:calc(var(--nav-h) + var(--safe-b));background:#0c0e13;border-top:1px solid var(--line);padding:.45rem .9rem;font-size:.78rem;color:var(--muted);text-align:center;z-index:20}
+.crisis-bar a{color:var(--spark);text-decoration:none}
+nav.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:.35rem .4rem calc(.35rem + var(--safe-b));background:rgba(7,8,12,.94);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr)}
+nav.dock button{background:transparent;border:0;color:var(--muted);padding:.4rem .1rem;border-radius:.8rem;font-size:.68rem;text-transform:uppercase}
+nav.dock button.on{color:var(--spark);background:rgba(224,168,92,.1)}nav.dock b{display:block;font-size:1.02rem;font-weight:500;text-transform:none}
+.help-card a{color:var(--spark)}.hidden{display:none!important}
+.note{background:#0b0e14;border:1px solid var(--line);border-radius:1rem;padding:.9rem 1rem;margin-top:.6rem}
+.note .kicker{margin-bottom:.3rem}
+@media (prefers-reduced-motion:reduce){.orb{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<section id="onboard" class="view"><div class="top"><div class="brand">Kindl<em>ing</em></div></div><p class="kicker">A quiet start</p><h1>You found out late. That changes the map.</h1><p>Three taps. Then this space is yours. Nothing leaves this phone.</p><div class="stack"><div class="card"><label class="kicker" for="name">What should we call you?</label><input class="field" id="name" maxlength="32" placeholder="First name — optional"/></div><div class="card"><p class="kicker">What resonates?</p><div class="choices" id="q-wiring"></div></div><div class="card"><p class="kicker">When did you find out?</p><div class="choices" id="q-found"></div></div><div class="card"><p class="kicker">How should the coach sound?</p><div class="choices" id="q-voice"></div></div><button class="btn btn-gold" id="start-btn">Light the kindling</button><p class="tiny">Not therapy. Not a diagnosis. Not for crisis.</p></div></section>
+<section id="home" class="view"><div class="top"><div class="brand">Kindl<em>ing</em></div><button class="ghost" id="too-much-btn">Too much</button></div><p class="kicker" id="daypart">Today</p><h1 id="greeting">Hello.</h1><p id="home-line">You don't have to perform today.</p><div class="card stack"><p class="kicker" style="margin:0">Capacity weather</p><div><p class="tiny" style="margin:0 0 .35rem">Energy</p><div class="chips" id="c-energy"></div></div><div><p class="tiny" style="margin:0 0 .35rem">Sensory</p><div class="chips" id="c-sensory"></div></div><div><p class="tiny" style="margin:0 0 .35rem">Social battery</p><div class="chips" id="c-social"></div></div><div><p class="tiny" style="margin:0 0 .35rem">Trauma load</p><div class="chips" id="c-trauma"></div></div></div><div class="card" style="margin-top:.75rem"><p class="kicker spark">Coach</p><p class="coach" id="coach-line">One small experiment beats a life overhaul.</p><h2 id="suggest-title" style="margin-top:.7rem">Session</h2><p id="suggest-copy">What matters today, and what's in the way?</p><button class="btn btn-gold" id="suggest-btn">Open session</button></div><div class="tiles" style="margin-top:.75rem"><button class="tile" data-go="session"><span>Coach</span><strong>Session</strong></button><button class="tile" data-go="skills"><span>Practice</span><strong>Skills</strong></button><button class="tile anchor" data-go="notes"><span>Keep</span><strong>Notes</strong></button><button class="tile" data-go="restart"><span>Reset</span><strong>Restart</strong></button></div></section>
+<section id="session" class="view"><div class="top"><div class="brand">Session</div><button class="ghost" data-go="home">Home</button></div><p id="session-step">Step 1 of 3</p><div class="card stack" id="session-body"></div><div class="btn-row" style="margin-top:.75rem"><button class="btn" id="session-back">Back</button><button class="btn btn-gold" id="session-next">Next</button></div></section>
+<section id="skills" class="view"><div class="top"><div class="brand">Skills</div><button class="ghost" data-go="home">Home</button></div><p>Short practice cards. Take what helps. Leave the rest.</p><div class="stack" id="skill-list"></div></section>
+<section id="notes" class="view"><div class="top"><div class="brand">Notes</div><button class="ghost" data-go="home">Home</button></div><p>Every session leaves a page you can re-read. Working memory gets a copy.</p><div class="stack" id="note-list"></div><p class="tiny" id="notes-empty">No notes yet. A session will write the first one.</p></section>
+<section id="restart" class="view"><div class="top"><div class="brand">Restart</div><button class="ghost" data-go="home">Home</button></div><p>Everything fell over. That's expected. Shame is not a feature.</p><div class="stack"><button class="choice" id="restart-reduce">Reduce input</button><button class="choice" id="restart-body">Downshift the body</button><button class="choice" id="restart-inch">One next inch</button><button class="choice" data-go="home">Just sit here</button></div><p class="coach" id="restart-note" style="margin-top:1rem"></p></section>
+<section id="patterns" class="view"><div class="top"><div class="brand">Patterns</div><button class="ghost" data-go="home">Home</button></div><p>A quiet log. This keeps showing up.</p><div class="stack" id="pattern-list"></div><p class="tiny">Patterns appear after a few sessions.</p></section>
+<section id="help" class="view"><div class="top"><div class="brand">Kindl<em>ing</em></div><button class="ghost" data-go="home">Home</button></div><div class="stack"><div class="card help-card"><p class="kicker">Please read this</p><h2>Not therapy. Not crisis care.</h2><p>Kindling is a self-care coach for late-identified adults. It is not therapy, not a diagnosis, not medication advice, and not a substitute for a doctor or emergency service.</p></div><div class="card help-card"><p class="kicker">If you are in danger</p><p>Australia — <a href="tel:000">000</a> · Lifeline <a href="tel:131114">13 11 14</a> · Beyond Blue <a href="tel:1300224636">1300 22 4636</a><br/>US — <a href="tel:911">911</a> · <a href="tel:988">988</a><br/>UK — <a href="tel:999">999</a> · <a href="tel:116123">116 123</a><br/>Canada — <a href="tel:911">911</a> · <a href="tel:988">988</a></p></div><div class="card"><p class="kicker">This phone only</p><p>Nothing is sent to a server.</p><div class="btn-row"><button class="btn" id="install-btn">Add to Home Screen</button><button class="btn" id="export-btn">Download my data</button><button class="btn" id="reset-btn">Start over</button></div><p class="tiny" id="install-note"></p></div></div></section>
+</div>
+<div class="crisis-bar">In danger in Australia? <a href="tel:000">000</a> · <a href="tel:131114">Lifeline 13 11 14</a> · <a href="tel:1300224636">Beyond Blue</a></div>
+<nav class="dock" aria-label="Main"><button data-go="home"><b>⌂</b>Home</button><button data-go="session"><b>○</b>Session</button><button data-go="skills"><b>·</b>Skills</button><button data-go="notes"><b>≈</b>Notes</button><button data-go="restart"><b>✦</b>Restart</button></nav>
+<script src="app.js"></script>
+</body>
+</html>

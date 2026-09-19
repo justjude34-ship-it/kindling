@@ -1,0 +1,19 @@
+{
+  "name": "Kindling",
+  "short_name": "Kindling",
+  "description": "Neuro-affirming AI coach for late-identified adults. ADHD-first, local-only, Kokoro-voiced. Not therapy.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07080c",
+  "theme_color": "#07080c",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
