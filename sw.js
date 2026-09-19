@@ -1,5 +1,5 @@
-const CACHE = "kindling-v1";
-const ASSETS = ["./", "./index.html", "./app.js", "./manifest.webmanifest", "./icon.svg"];
+const CACHE = "kindling-v2";
+const ASSETS = ["./", "./index.html", "./app.js", "./hero.jpg", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
