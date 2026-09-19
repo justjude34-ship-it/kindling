@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kindling">
   <rect width="512" height="512" rx="108" fill="#07080c"/>
-  <path d="M150 360 C150 260 200 180 256 180 C312 180 362 260 362 360" fill="none" stroke="#e0a85c" stroke-width="26" stroke-linecap="round"/>
-  <path d="M150 360 C150 300 190 250 256 250 C322 250 362 300 362 360" fill="none" stroke="#7ec8c0" stroke-width="18" stroke-linecap="round" opacity=".7"/>
-  <circle cx="256" cy="200" r="14" fill="#e0a85c"/>
-  <circle cx="256" cy="200" r="6" fill="#f4efe6"/>
+  <defs>
+    <radialGradient id="glow" cx="52%" cy="52%" r="28%">
+      <stop offset="0%" stop-color="#c4a7e7" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#07080c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="268" cy="268" r="90" fill="url(#glow)"/>
+  <path d="M214 148 C148 176 128 248 168 318 C196 368 236 392 268 398 C232 340 228 268 268 214 C292 180 268 156 214 148Z" fill="#e0a85c"/>
+  <path d="M292 150 C372 176 396 268 348 344 C322 382 286 398 268 400" fill="none" stroke="#7ec8c0" stroke-width="18" stroke-linecap="round"/>
+  <path d="M268 236 L274 256 L294 262 L274 268 L268 288 L262 268 L242 262 L262 256 Z" fill="#e8c37a"/>
 </svg>
